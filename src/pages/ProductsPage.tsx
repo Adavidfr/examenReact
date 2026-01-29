@@ -25,7 +25,7 @@ export default function ProductsPage() {
       try {
         // Sin paginación en UI: pedimos un page_size grande y mostramos lo que venga
         const url =
-          "https://higuera-billing-api.desarrollo-software.xyz/api/products/?page=1&page_size=100";
+          "https://akabab.github.io/starwars-api/api/all.json";
         const res = await fetch(url);
         const data = await res.json();
 
@@ -46,7 +46,7 @@ export default function ProductsPage() {
   return (
     <Paper sx={{ p: 3, borderRadius: 3 }}>
       <Typography variant="h5" fontWeight={900} gutterBottom>
-        Productos
+      Listado de Categorías (Star Wars - Personajes)
       </Typography>
 
       <Typography color="text.secondary" sx={{ mb: 2 }}>
@@ -67,38 +67,36 @@ export default function ProductsPage() {
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Categoría</TableCell>
-              <TableCell align="right">Precio</TableCell>
-              <TableCell align="right">Stock</TableCell>
               <TableCell>Foto</TableCell>
+              <TableCell>Nombre</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Género</TableCell>
+              <TableCell >Altura</TableCell>
             </TableRow>
           </TableHead>
 
           <TableBody>
             {items.map((p, idx) => (
               <TableRow key={p?.id ?? idx} hover>
-                <TableCell>{p?.id ?? "-"}</TableCell>
-                <TableCell>{p?.name ?? "-"}</TableCell>
-                <TableCell>{p?.category_name ?? "-"}</TableCell>
-                <TableCell align="right">{p?.price ?? "-"}</TableCell>
-                <TableCell align="right">{p?.stock ?? "-"}</TableCell>
                 <TableCell>
-                  {p?.url_image ? (
-                    <img
-                      src={p.url_image}
-                      alt={p?.name ?? "producto"}
-                      style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 8, border: "1px solid rgba(0,0,0,.15)" }}
-                      onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).src =
-                          "https://via.placeholder.com/80?text=No+Img";
-                      }}
-                    />
-                  ) : (
-                    <span style={{ color: "#667085" }}>—</span>
-                  )}
-                </TableCell>
+                    {p.image ? (
+                        <img
+                            src={p.image}
+                            alt={p?.name ?? "image"}
+                            style={{ width: 48, height: 48, objectFit: "cover", borderRadius: 8, border: "1px solid rgba(0,0,0,.15)" }}
+                            onError={(e) => {
+                                (e.currentTarget as HTMLImageElement).src =
+                                    "https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg";
+                            }}
+                        />
+                    ) : (
+                        <span style={{ color: "#667085" }}>—</span>
+                    )}
+                </TableCell>                
+                <TableCell>{p?.name ?? "-"}</TableCell>
+                <TableCell>{p?.id ?? "-"}</TableCell>
+                <TableCell>{p?.gender ?? "-"}</TableCell>
+                <TableCell>{p?.height ?? "-"}</TableCell>               
               </TableRow>
             ))}
           </TableBody>

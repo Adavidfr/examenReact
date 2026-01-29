@@ -3,10 +3,10 @@ import { NavLink, Route, Routes } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
-import SumPage from "./pages/SumPage";
-import MultiplyPage from "./pages/MultiplyPage";
+import NuevaCategoriaPage from "./pages/NuevaCategoriaPage";
 import AboutPage from "./pages/AboutPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import CalculosPage from "./pages/CalculosPage";
 
 const linkBtnSx = {
   color: "white",
@@ -29,13 +29,13 @@ export default function App() {
             Home
           </Button>
           <Button component={NavLink} to="/productos" sx={linkBtnSx}>
-            Productos
+            Listado Starwars
           </Button>
-          <Button component={NavLink} to="/suma" sx={linkBtnSx}>
-            Suma
+          <Button component={NavLink} to="/nuevaCategoria" sx={linkBtnSx}>
+            Nueva Categoría
           </Button>
-          <Button component={NavLink} to="/multiplica" sx={linkBtnSx}>
-            Multiplica
+          <Button component={NavLink} to="/calculos" sx={linkBtnSx}>
+            Cálculos
           </Button>
           <Button component={NavLink} to="/acerca" sx={linkBtnSx}>
             Acerca de
@@ -49,8 +49,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/productos" element={<ProductsPage />} />
-          <Route path="/suma" element={<SumPage />} />
-          <Route path="/multiplica" element={<MultiplyPage />} />
+          <Route path="/nuevaCategoria" element={<NuevaCategoriaPage />} />
+          <Route path="/calculos" element={<CalculosPage />} />
           <Route path="/acerca" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
